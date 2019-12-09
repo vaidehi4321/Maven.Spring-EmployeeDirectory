@@ -33,7 +33,9 @@ public class Department {
         return departmentManager;
     }
 
-
+    public void setDepartmentNumber(Long departmentNumber) {
+        this.departmentNumber = departmentNumber;
+    }
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;

@@ -1,8 +1,11 @@
 package io.zipcoder.persistenceapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Employee {
     @Id
     @GeneratedValue
@@ -17,6 +20,9 @@ public class Employee {
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee manager;
     private Long departmentNumber;
+    public Employee(){
+
+    }
 
     public Employee(String firstName, String lastName, String title, String phoneNumber, String email, String hireDate, Employee manager, Long departmentNumber) {
         this.firstName = firstName;
@@ -26,8 +32,8 @@ public class Employee {
         this.email = email;
         this.hireDate = hireDate;
 
-        this.manager = manager;
-        this.departmentNumber = departmentNumber;
+        //this.manager = manager;
+        //this.departmentNumber = departmentNumber;
     }
 
     public Long getEmployeeId() {
@@ -66,7 +72,9 @@ public class Employee {
         return departmentNumber;
     }
 
-
+    public void setId(Long employeeId) {
+        this.employeeId =employeeId;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;

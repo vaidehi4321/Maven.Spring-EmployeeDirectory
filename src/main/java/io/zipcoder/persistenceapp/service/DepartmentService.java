@@ -28,7 +28,7 @@ public class DepartmentService {
 
     public Department update(Long departmentNumber, Department newDepartmentData) {
         Department originalDepartment = repository.findById(departmentNumber).get();
-
+        originalDepartment.setDepartmentNumber(newDepartmentData.getDepartmentNumber());
         originalDepartment.setDepartmentName(newDepartmentData.getDepartmentName());
         originalDepartment.setDepartmentManager(newDepartmentData.getDepartmentManager());
 

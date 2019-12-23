@@ -4,40 +4,43 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
+
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Employee {
     @Id
-    @GeneratedValue
-    private Long employeeId ;
+    @GeneratedValue(strategy = GenerationType.TABLE)
 
+    private Long employeeNumber;
     private String firstName;
     private String lastName;
     private String title;
     private String phoneNumber;
     private String email;
-    private String hireDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee manager;
+   // @ManyToOne
+    //@JoinColumn(name = "dept_id")
     private Long departmentNumber;
-    public Employee(){
 
+    public Employee() {
     }
 
-    public Employee(String firstName, String lastName, String title, String phoneNumber, String email, String hireDate, Employee manager, Long departmentNumber) {
+
+    public Employee(String firstName, String lastName, String title, String phoneNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = title;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.hireDate = hireDate;
 
-        //this.manager = manager;
-        //this.departmentNumber = departmentNumber;
     }
 
-    public Long getEmployeeId() {
-        return employeeId;
+
+
+    public Long getEmployeeNumber() {
+        return employeeNumber;
     }
 
     public String getFirstName() {
@@ -60,10 +63,6 @@ public class Employee {
         return email;
     }
 
-    public String getHireDate() {
-        return hireDate;
-    }
-
     public Employee getManager() {
         return manager;
     }
@@ -72,8 +71,8 @@ public class Employee {
         return departmentNumber;
     }
 
-    public void setId(Long employeeId) {
-        this.employeeId =employeeId;
+    public void setEmployeeNumber(Long employeeNumber) {
+        this.employeeNumber = employeeNumber;
     }
 
     public void setFirstName(String firstName) {
@@ -96,9 +95,6 @@ public class Employee {
         this.email = email;
     }
 
-    public void setHireDate(String hireDate) {
-        this.hireDate = hireDate;
-    }
 
     public void setManager(Employee manager) {
         this.manager = manager;

@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class DepartmentController {
     private DepartmentService departmentService;
 
@@ -17,29 +17,31 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-    @GetMapping("/department/")
+    @GetMapping("/API/department/")
     public ResponseEntity<Iterable<Department>> index() {
         return new ResponseEntity<>(departmentService.index(), HttpStatus.OK);
     }
 
-    @GetMapping("/department/{departmentNumber}")
+    @GetMapping("/API/department/{departmentNumber}")
     public ResponseEntity<Department> show(@PathVariable Long departmentNumber) {
         return new ResponseEntity<>(departmentService.show(departmentNumber), HttpStatus.OK);
     }
 
-    @PostMapping("/department/")
+    @PostMapping("/API/department/")
     public ResponseEntity<Department> create(@RequestBody Department department) {
         return new ResponseEntity<>(departmentService.create(department), HttpStatus.CREATED);
     }
 
-    @PutMapping("/department/{departmentNumber}")
+    @PutMapping("/API/department/{departmentNumber}")
     public ResponseEntity<Department> update(@PathVariable Long departmentNumber, @RequestBody Department department) {
         return new ResponseEntity<>(departmentService.update(departmentNumber, department), HttpStatus.OK);
     }
 
-    @DeleteMapping("/department/{departmentNumber}")
+    @DeleteMapping("/API/department/{departmentNumber}")
     public ResponseEntity<Boolean> destroy(@PathVariable Long departmentNumber) {
         return new ResponseEntity<>(departmentService.delete(departmentNumber), HttpStatus.OK);
     }
+
+
 
 }

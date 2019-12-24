@@ -18,8 +18,6 @@ public class Department {
 
     }
 
-
-
     public Long getDepartmentNumber() {
         return departmentNumber;
     }

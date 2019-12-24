@@ -45,3 +45,7 @@ public class DepartmentController {
 
 
 }
+/*
+{"departmentName":"math","manger":null}
+
+*/

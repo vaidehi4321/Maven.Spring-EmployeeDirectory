@@ -19,8 +19,9 @@ public class EmployeeController {
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
     @GetMapping("/testss")
-    public String testMe(){
+    public String testMe() {
         return "it Works";
     }
 
@@ -47,6 +48,11 @@ public class EmployeeController {
     @DeleteMapping("/API/employee/{id}")
     public ResponseEntity<Boolean> destroy(@PathVariable Long id) {
         return new ResponseEntity<>(employeeService.delete(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/API/employee/{id}")
+    public ResponseEntity<Employee> findManager(@PathVariable Long id) {
+        return new ResponseEntity<>(employeeService.findManager(id), HttpStatus.OK);
     }
 
 }

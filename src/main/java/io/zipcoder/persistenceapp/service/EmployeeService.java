@@ -13,6 +13,7 @@ public class EmployeeService {
     //instance of the corresponding repository
 @Autowired
     private EmployeeRepository repository;
+List<Employee>employeeList = new ArrayList<>();
 
 
     //now the constructor
@@ -44,6 +45,10 @@ public class EmployeeService {
     public Boolean delete(Long id){
        repository.delete(id);
        return true;
+    }
+
+    public Employee findManager(Long id) {
+        return repository.findOne(id).getManager();
     }
 
 
